@@ -558,3 +558,7 @@ input[name=shortcutKeyCharacter] {
 .shortcut-key-code {
   display: none;
 }
+
+.shortcut-key-word {
+  display: none;
+}

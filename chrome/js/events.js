@@ -23,9 +23,14 @@ Glee.Events = {
     //  enter: execute query
     else if (e.keyCode === 13) {
       e.preventDefault();
-      Glee.Events.execute(e, e.target.value);
-      if (Glee.isEspRunning)
-        Glee.setState(Glee.selectedElement, 'el');
+      console.log("I fire : " + Glee.options.tabManagerShortcutWord)
+      if (Glee.value() === Glee.options.tabManagerShortcutWord)
+      //if (Glee.value() === "!tabs")
+        Glee.Browser.openTabManager();
+      else
+        Glee.Events.execute(e, e.target.value);
+        if (Glee.isEspRunning)
+          Glee.setState(Glee.selectedElement, 'el');
     }
 
     //  Up / Down Arrow keys: Begin scrolling

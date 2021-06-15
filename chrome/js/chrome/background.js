@@ -18,7 +18,7 @@ function showUpdateNotification() {
 
 function upgrade(version) {
   // with version 2.2, we are moving *everything* to localStorage
-  //  that way, we can easily maintain Safari and Chrome support and 
+  //  that way, we can easily maintain Safari and Chrome support and
   //  implement future support for other browsers
 
   if (version === 2.2) {
@@ -41,14 +41,15 @@ function upgrade(version) {
           case 'up_scrolling_key'         : newOption = 'upScrollingKey'; break;
           case 'tab_shortcut_status'      : newOption = 'tabManager'; break;
           case 'tab_shortcut_key'         : newOption = 'tabManagerShortcutKey'; break;
+          case 'tab_shortcut_word'        : newOption = 'tabManagerShortcutWord'; break;
           case 'esp_status'               : newOption = 'esp'; break;
           case 'espModifiers'             : newOption = 'espVisions'; break;
         }
-        if (newOption === 'sync' 
-            || newOption === 'hyper' 
-            || newOption === 'searchBookmarks' 
-            || newOption === 'outsideScrolling' 
-            || newOption === 'esp' 
+        if (newOption === 'sync'
+            || newOption === 'hyper'
+            || newOption === 'searchBookmarks'
+            || newOption === 'outsideScrolling'
+            || newOption === 'esp'
             || newOption === 'tabManager') {
           cache.options[newOption] = options[option] == 1 ? true : false;
         }
@@ -252,14 +253,14 @@ function takeScreenshot() {
   // code from Samples (http://code.google.com/chrome/extensions/samples.html)
   chrome.tabs.captureVisibleTab(null, {format: 'png'}, function(img) {
     var screenshotUrl = img;
-    var viewTabUrl = [chrome.extension.getURL('screenshot.html'), 
+    var viewTabUrl = [chrome.extension.getURL('screenshot.html'),
       '?id=', screenshotId++].join('');
     // create a new page and display the image
     chrome.tabs.create({url: viewTabUrl}, function(tab) {
       var targetId = tab.id;
 
       var addSnapshotImageToTab = function(tabId, changedProps) {
-        if (tabId != targetId 
+        if (tabId != targetId
             || changedProps.status != 'complete') {
           return;
         }

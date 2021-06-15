@@ -6,6 +6,7 @@ var BasicsView = Backbone.View.extend({
 
     'click .search-engine': '_updateSearchEngine',
     'click .set-default-shortcut-key': '_setDefaultShortcutKey',
+    'click .set-default-shortcut-word': '_setDefaultShortcutWord',
 
     'keyup #addDisabledUrlValue': '_addDisabledURL',
     'click #addDisabledUrlBtn': '_addDisabledURL',
@@ -79,6 +80,19 @@ var BasicsView = Backbone.View.extend({
     $el.attr('value', 'g').keyup();
     $keyCode.text(71);
     saveOption('shortcutKey', 71);
+  },
+
+  _setDefaultShortcutWord: function(e) {
+    var $el, value;
+
+    e.preventDefault();
+
+    $el = $(e.target);
+    value = $el.data('value');
+
+
+    $('#tabManagerShortcutWord').attr('value', value);
+    saveOption('shortcutWord', value);
   },
 
   _addDisabledURL: function(e) {

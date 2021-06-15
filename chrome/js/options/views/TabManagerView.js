@@ -1,7 +1,8 @@
 
 var TabManagerView = Backbone.View.extend({
   events: {
-    'click .set-default-shortcut-key': '_setDefaultShortcutKey'
+    'click .set-default-shortcut-key': '_setDefaultShortcutKey',
+    'click .set-default-shortcut-word': '_setDefaultShortcutWord'
   },
 
   initialize: function() {
@@ -39,5 +40,18 @@ var TabManagerView = Backbone.View.extend({
 
     $keyCode.text(this._defaultKeyCode);
     saveOption('tabManagerShortcutKey', this._defaultKeyCode);
+  },
+
+  _setDefaultShortcutWord: function(e) {
+    var $el, value;
+
+    e.preventDefault();
+
+    $el = $(e.target);
+    value = $el.data('value');
+
+
+    $('#tabManagerShortcutWord').attr('value', value);
+    saveOption('tabManagerShortcutWord', value);
   }
 });

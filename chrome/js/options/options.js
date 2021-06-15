@@ -41,6 +41,12 @@ function initOptions(response) {
       KeyCombo.init($('[name=tabManagerShortcutKey]').get(0), $shortcutKeyCode.get(0));
     }
 
+    else if (option === 'tabManagerShortcutWord') {
+      var $shortcutKeyWord = $('[name=tabManagerShortcutKeyWord]').text(options[option]);
+      // KeyCombo.init($('[name=tabManagerShortcutWord]').get(0), $shortcutKeyCode.get(0));
+      addItem('tabManagerShortcutWord', $shortcutKeyWord);
+    }
+
     else if (option === 'disabledUrls') {
       var len = options[option].length;
       for (var i = 0; i < len; i++) {

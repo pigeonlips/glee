@@ -14,6 +14,7 @@ var cache = {
     downScrollingKey: 83,
     tabManager: true,
     tabManagerShortcutKey: 190,
+    tabManagerShortcutWord: '!tabs',
     hyper: false,
     size: 'medium',
     theme: 'GleeThemeDefault',
@@ -62,7 +63,7 @@ function checkVersion() {
   if (localStorage['gleebox_version'] != CURRENT_VERSION) {
     if (!localStorage['gleebox_version'])
       saveOptionsToDataStore();
-    
+
     // Upgrade data model for 2.2
     else if (parseFloat(localStorage['gleebox_version']) < 2.2)
       upgrade(2.2);
@@ -164,7 +165,7 @@ function setOptionUsingShorthand(option, value) {
   sendRequestToAllTabs({value: 'applyOptions', options: cache.options});
 
   // if sync is enabled, update data
-  if (saveSyncData != undefined && 
+  if (saveSyncData != undefined &&
         localStorage['gleebox_sync'] == 1)
     saveSyncData(cache.options);
 }
@@ -215,8 +216,8 @@ function saveOptionsToCache(options) {
 
 function saveOptionsToDataStore() {
   for (option in cache.options) {
-    if (option === 'disabledUrls' 
-        || option === 'espVisions' 
+    if (option === 'disabledUrls'
+        || option === 'espVisions'
         || option === 'scrapers') {
       try {
         localStorage[option] = JSON.stringify(cache.options[option]);

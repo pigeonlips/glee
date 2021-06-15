@@ -100,6 +100,7 @@ Glee.Browser.openTabManager = function() {
         Glee.Browser.moveToTab(item);
       else if (action === 'remove')
         Glee.Browser.removeTab(item);
+        Glee.Browser.openTabManager(); // stay open after removing a tab
     });
   };
   Glee.setState('Displays a vertical list of currently open tabs.', 'msg');
